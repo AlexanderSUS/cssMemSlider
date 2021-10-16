@@ -1,24 +1,58 @@
+* { box-sizing: border-box;}
+ html, body {
+   height: 100%;
+   overflow: hidden;
+ }
+
 body {
   margin: 0 auto;
   color: coral;
   background-color: #141518;
 }
 
-.wrapper {
-  width: 100%;
+.slider {
+  width: 90vh;
+  overflow: hidden;
   margin: 4vh auto;
-  padding: 0 4vh;
 }
 
-.slider-window {
-  height: 60vh;
-
-  /* overflow: hidden; */
-}
-
-.slider-inner-widow {
+.slides {
   display: flex;
-  flex-direction: row;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slides::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.slides::-webkit-scrollbar-thumb {
+  width: 10px;
+  height: 10px;
+}
+
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slides > div {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 90vh;
+  height: 50.5vh;
+  margin-right: 50px;
+  border-radius: 10px;
+  background-color: #eee;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+ align-items: center;
 }
 
 .slide {
@@ -29,27 +63,42 @@ body {
   background-size: contain;
 }
 
-.slide1 {
-  background-image: url(./assets/1.jpg);
+.control-window > a {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: skyblue;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid skyblue;
+  border-radius: 50%;
+  margin: 0 0 0.5rem 0;
+  position: relative;
 }
-.slide2 {
-  background-image: url(./assets/2.jpg);
+a:link {
+  background: steelblue;
+  border-color: steelblue;
 }
-.slide3 {
-  background-image: url(./assets/3.gif);
 
+.control-window > a:hover {
+  border-color: springgreen;
+  background-color: springgreen;
 }
-.slide4 {
-  background-image: url(./assets/4.jpg);
 
+.control-window > a:visited{
+  border-color: skyblue;
+  background-color: transparent;
 }
-.slide5 {
-  background-image: url(./assets/5.jpg);
 
-}
-.slide6 {
-  background-image: url(./assets/6.jpg);
-}
+
+
+.slide1 { background-image: url(./assets/1.jpg); }
+.slide2 { background-image: url(./assets/2.jpg); }
+.slide3 { background-image: url(./assets/3.gif); }
+.slide4 { background-image: url(./assets/4.jpg); }
+.slide5 { background-image: url(./assets/5.jpg); }
+.slide6 { background-image: url(./assets/6.jpg); }
 
 
 .text {
