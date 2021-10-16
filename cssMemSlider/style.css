@@ -1,0 +1,57 @@
+body {
+  margin: 0 auto;
+  color: coral;
+  background-color: #141518;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 4vh auto;
+  padding: 0 4vh;
+}
+
+.slider-window {
+  height: 60vh;
+
+  /* overflow: hidden; */
+}
+
+.slider-inner-widow {
+  display: flex;
+  flex-direction: row;
+}
+
+.slide {
+  height: 60vh;
+  background-color: #111215;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.slide1 {
+  background-image: url(./assets/1.jpg);
+}
+.slide2 {
+  background-image: url(./assets/2.jpg);
+}
+.slide3 {
+  background-image: url(./assets/3.gif);
+
+}
+.slide4 {
+  background-image: url(./assets/4.jpg);
+
+}
+.slide5 {
+  background-image: url(./assets/5.jpg);
+
+}
+.slide6 {
+  background-image: url(./assets/6.jpg);
+}
+
+
+.text {
+  font-size: 2em;
+}
