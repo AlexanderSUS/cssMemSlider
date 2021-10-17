@@ -1,3 +1,8 @@
+:root {
+  --full-screen-width: 75vw;
+  --full-screen-height: 60vmin;
+}
+
 * { box-sizing: border-box;}
  html, body {
    height: 100%;
@@ -12,19 +17,21 @@ body {
 
 .slider {
   display: grid;
-  grid-template-columns: 2vw 2fr 2fr 2fr 1fr 1fr  2vw;
-  grid-template-rows: 4vmin 40vmin 3vmin 5vmin;
+  grid-template-columns: 6fr 2fr;
+  grid-template-rows: var(--full-screen-height) 3vmin 5vmin;
 
-  width: 75vw;
+  width: var(--full-screen-width);
   overflow: hidden;
-  margin: 0 auto;
+  margin: 2vmin auto;
+
+  border-radius: 10px;
 }
 
 .slides {
-  grid-column-start: 2;
-  grid-column-end: 7;
-  grid-row-start: 2;
-  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
   display: flex;
 
   overflow-x: auto;
@@ -48,93 +55,85 @@ body {
   background: transparent;
 }
 
-.slides > div {
+.picture {
   scroll-snap-align: start;
   flex-shrink: 0;
-  width: 75vw;
-  height: 40vmin;
+  width: var(--full-screen-width);
+  height: var(--full-screen-height);
   border-radius: 10px;
-  background-color: #eee;
   transform-origin: center center;
   transform: scale(1);
   transition: transform 0.5s;
   position: relative;
   align-items: center;
-}
-
-.slide {
-  height: 44vmin;
-  background-color: #111215;
-}
-
-.picture {
-  height: 100%;
-  max-height: 40vmin;
-  width: 75vw;
   background-color: #111215;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
+.slide {
+  height: 64vmin;
+  background-color: #111215;
+}
+
 .mask {
   z-index: 5;
-  grid-column-start: 3;
-  grid-column-end: 6;
-  grid-row-start: 3;
-  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 4;
 
-  background: linear-gradient(to left, rgba(20, 21, 24, 1), rgba(20, 21, 24, 0));
+  background: linear-gradient(to left, rgba(20, 21, 24, 0.8),rgba(20, 21, 24, 0), rgba(20, 21, 24, 0), rgba(20, 21, 24, 0), rgba(20, 21, 24, 0));
 }
 
 .control-window {
   z-index: 5;
-  grid-column-start: 6;
-  grid-column-end: 7;
-  grid-row-start: 4;
-  grid-row-end: 5;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
 
 
   background-color:#141518;
 }
 
-.control-window > a {
+a {
   display: block;
   position: relative;
-  align-items: center;
-  justify-content: center;
 
   width: 1vmin;
   height: 1vmin;
 
+  margin: 0.5vmin;
   text-decoration: none;
 
-  background: greenyellow;
+  background: rgb(50, 160, 235);
   border: 0.2vmin solid transparent; 
   border-radius: 50%;
 }
 
 a:link {
-  background: greenyellow;
+  background: rgb(50, 160, 235);
 }
 
 a:hover {
-  border-color: gainsboro;
+  border-color: white;
   background-color: white;
 }
 
 a:focus {
-  border-color: white;
-  background-color: greenyellow;
+  border-color: rgb(50, 160, 235);
+  background-color: transparent; 
 }
 
 a:active {
-  border-color: greenyellow;
   background-color: transparent;
+  border-color: rgb(50, 160, 235);
 }
 
 span {
@@ -154,24 +153,48 @@ span:hover a {
 .picture6 { background-image: url(./assets/6.jpg); }
 
 .text {
-  font-size: 3vmin;
+  font-size: 2.5vmin;
   margin-top: 3vmin;
+}
+
+@media (max-width: 1024px) {
+  .slider,
+  .slide,
+  .picture {
+    width: 96vw;
+  }
 }
 
 @media (max-width: 768px) {
 
   .slider {
-    grid-template-columns: 2vw 1fr 2vw;
-    grid-template-rows: 4vmin 40vh 5vmin 5vmin 5vmin auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--full-screen-height) 3vmax 3vmax 3vmax 7vmax;
   }
   
   .slides {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    grid-row: 1 / 6;
   }
 
   .control-window {
-    grid-column: 2 / 3;
-    grid-row: 4 / 5
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    justify-content: center;
+  }
+  
+  .mask {
+    display: none;
+  }
+
+  .text {
+    margin-top: 10vmax;
+    font-size: 2.5vmax;
+  }
+
+  a {
+    width: 2vmax;
+    height: 2vmax;
+    margin: 0.5vmax 2vmax;
   }
 }
