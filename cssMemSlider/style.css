@@ -23,7 +23,7 @@ body {
   grid-template-rows: var(--full-screen-height) var(--full-screen-row-height) calc(var(--full-screen-row-height) * 2);
 
   width: var(--full-screen-width);
-  margin: 2vmin auto;
+  margin: 2vmax auto auto auto;
 
   border-radius: 10px;
   overflow: hidden;
@@ -120,10 +120,6 @@ a {
   border-radius: 50%;
 }
 
-a:link {
-  background: rgb(50, 160, 235);
-}
-
 a:hover {
   border-color: white;
   background-color: white;
@@ -161,8 +157,11 @@ span:hover a {
   background: linear-gradient(to left, rgba(20, 21, 24, 0.8),rgba(20, 21, 24, 0), rgba(20, 21, 24, 0), rgba(20, 21, 24, 0), rgba(20, 21, 24, 0));
 }
 
-footer {
-  height: 100%;
+@media (hover: none) {
+  a:hover {
+    border-color: white;
+    background-color: transparent;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -213,5 +212,10 @@ footer {
     left: -7px;
     padding-left: 2vmin;
     padding-right: 2.6vmin;
+  }
+
+  a:hover {
+    border-color: white;
+    background-color: transparent;
   }
 }
