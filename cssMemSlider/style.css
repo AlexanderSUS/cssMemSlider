@@ -1,0 +1,221 @@
+:root {
+  --full-screen-width: 75vw;
+  --full-screen-height: 75vmin;
+  --full-screen-row-height: 4vmin;
+}
+
+* { box-sizing: border-box;}
+ html, body {
+   height: 100%;
+   overflow: hidden;
+ }
+
+body {
+  margin: 0 auto;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  background-color: #141518;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 6fr 2fr;
+  grid-template-rows: var(--full-screen-height) var(--full-screen-row-height) calc(var(--full-screen-row-height) * 2);
+
+  width: var(--full-screen-width);
+  margin: 2vmax auto auto auto;
+
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slides {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  display: flex;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slides::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.slides::-webkit-scrollbar-thumb {
+  width: 0;
+  height: 0;
+}
+
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.picture {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: var(--full-screen-width);
+  height: var(--full-screen-height);
+  border-radius: 10px;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+  align-items: center;
+  background-color: #111215;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: #111215;
+}
+
+.picture0 { background-image: url(./assets/0.jpg); }
+.picture1 { background-image: url(./assets/1.jpg); }
+.picture2 { background-image: url(./assets/2.jpg); }
+.picture3 { background-image: url(./assets/3.gif); }
+.picture4 { background-image: url(./assets/4.jpg); }
+.picture5 { background-image: url(./assets/5.jpg); }
+.picture6 { background-image: url(./assets/6.jpg); }
+
+.empty {
+  height: var(--full-screen-row-height);
+}
+
+.text {
+  font-size: 3vmin;
+}
+
+.control-window {
+  z-index: 5;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  background-color:#141518;
+}
+
+a {
+  display: block;
+  position: relative;
+
+  width: 1.5vmin;
+  height: 1.5vmin;
+
+  margin: 0.75vmin;
+  text-decoration: none;
+
+  background: rgb(50, 160, 235);
+  border: 0.2vmin solid transparent; 
+  border-radius: 50%;
+}
+
+a:hover {
+  border-color: white;
+  background-color: white;
+}
+
+a:focus {
+  border-color: rgb(50, 160, 235);
+  background-color: transparent; 
+}
+
+a:active {
+  background-color: transparent;
+  border-color: rgb(50, 160, 235);
+}
+
+span {
+  position: relative;
+  left: -6px;
+  top: -2px;
+  padding: 2.5vmax 1.5vmin;
+}
+
+span:hover a {
+  border-color: gainsboro;
+  background-color: white;
+}
+
+.mask {
+  z-index: 5;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 4;
+
+  background: linear-gradient(to left, rgba(20, 21, 24, 0.8),rgba(20, 21, 24, 0), rgba(20, 21, 24, 0), rgba(20, 21, 24, 0), rgba(20, 21, 24, 0));
+}
+
+@media (hover: none) {
+  a:hover {
+    border-color: white;
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 1024px) {
+  .slider,
+  .slide,
+  .picture {
+    width: 96vw;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .slider {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--full-screen-height) 3vmax 3vmax 3vmax auto;
+  }
+  
+  .slides {
+    grid-column: 1 / 2;
+    grid-row: 1 / 6;
+  }
+
+  .control-window {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    justify-content: center;
+  }
+  
+  .mask {
+    display: none;
+  }
+
+  .empty {
+    height: 9vmax;
+  }
+
+  .text {
+    font-size: 4vmax;
+  }
+
+  a {
+    width: 2vmax;
+    height: 2vmax;
+    margin: 0.5vmax 1.5vmax;
+  }
+
+  span {
+    left: -7px;
+    padding-left: 2vmin;
+    padding-right: 2.6vmin;
+  }
+
+  a:hover {
+    border-color: white;
+    background-color: transparent;
+  }
+}
